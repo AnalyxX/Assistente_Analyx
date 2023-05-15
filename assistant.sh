@@ -31,7 +31,7 @@ echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${RESET_FONTE}Serei seu as
 sleep 3
 
 echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${RESET_FONTE}Antes de tudo vou atualizar os pacotes instalados no seu sistema!!"
-sudo apt update && sudo apt upgrade
+
 sleep 3
 # sudo apt update && sudo apt upgrade
 
