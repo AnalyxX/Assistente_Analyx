@@ -90,7 +90,7 @@ else
 		cd java #acessa o diretorio java
 		cd analyx-source-gui #acessa o diretorio da api
 		cd target #acesso ao target onde esta o .jar
-		sudo chmod +x looca-api-1.0-SNAPSHOT-jar-with-dependencies.jar #atribui acesso ao arquivo para ser um executavel
+		sudo chmod +x analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar #atribui acesso ao arquivo para ser um executavel
 		
 		sleep 2
 		echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${VERDE}INSTALAÇÃO REALIZADA COM SUCESSO :D${RESET_FONTE}${RESET}"
