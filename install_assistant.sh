@@ -83,12 +83,12 @@ else
 		sleep 2
 		git clone https://github.com/AnalyxX/java.git #executa o clone onde esta o jar
 		cd java #acessa o diretorio java
-		cd looca-api #acessa o diretorio da api
+		cd analyx-source-gui #acessa o diretorio da api
 		sudo apt-get update #atualizar os pacotes do sistema
 		sudo apt-get install maven #instalar o Maven
 		mvn install #baixar as dependências
 		cd java #acessa o diretorio java
-		cd looca-api #acessa o diretorio da api
+		cd analyx-source-gui #acessa o diretorio da api
 		cd target #acesso ao target onde esta o .jar
 		sudo chmod +x looca-api-1.0-SNAPSHOT-jar-with-dependencies.jar #atribui acesso ao arquivo para ser um executavel
 		
