@@ -87,11 +87,9 @@ else
 		sudo apt-get update #atualizar os pacotes do sistema
 		sudo apt-get install maven #instalar o Maven
 		mvn install #baixar as dependências
-		cd java #acessa o diretorio java
-		cd analyx-source-gui #acessa o diretorio da api
 		cd target #acesso ao target onde esta o .jar
 		sudo chmod +x analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar #atribui acesso ao arquivo para ser um executavel
-		
+		java -jar analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar
 		sleep 2
 		echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${VERDE}INSTALAÇÃO REALIZADA COM SUCESSO :D${RESET_FONTE}${RESET}"
 		echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${VERDE}${ITALICO}Analyx está sempre a sua disposição.${RESET_FONTE}${RESET}"
