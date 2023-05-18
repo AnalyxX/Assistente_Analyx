@@ -10,4 +10,4 @@
 
 # 4 - Digite o comando: chmod +x install_assistant.sh
 
-#5 - Execute o script digitando: ./install_assistant.sh
+# 5 - Execute o script digitando: ./install_assistant.sh
