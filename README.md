@@ -8,6 +8,6 @@
 
 # 3 - Direciona-se a pasta raiz(Assistente_Analyx) onde esta o arquivo executável, utilize o comando: cd Assistente_Analyx
 
-# 4 - Digite o comando: chmod +x assistant.sh
+# 4 - Digite o comando: chmod +x install_assistant.sh
 
-# 5 - Execute o script digitando: ./assistant.sh
+#5 - Execute o script digitando: ./install_assistant.sh
