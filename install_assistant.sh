@@ -33,7 +33,7 @@ sleep 3
 echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${RESET_FONTE}Antes de tudo vou atualizar os pacotes instalados no seu sistema!!"
 
 sleep 3
-# sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt upgrade
 
 echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${VERDE}PACOTES ATUALIZADOS COM SUCESSO!! :D
 ${RESET_FONTE}${RESET}"
