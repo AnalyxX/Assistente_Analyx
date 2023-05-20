@@ -25,8 +25,11 @@ sudo systemctl start docker
 sudo systemctl enable docker
 sudo docker pull mysql:5.7
 sudo docker run -d -p 3306:3306 --name ContainerAnalyx -e "MYSQL_DATABASE=bd_analyx" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
-docker cp /Desktop/Assistente_Analyx/script_bd.sql ContainerAnalyx:/
-docker exec -it ContainerAnalyx mysql -u root -purubu100 bd_analyx < /script_bd.sql
+sudo docker cp ~/Desktop/Assistente_Analyx/script_bd.sql ContainerAnalyx:/
+sudo docker exec -it ContainerAnalyx bash 
+mysql -u root -purubu100 bd_analyx < script_bd.sql
+
+
 
 
 
