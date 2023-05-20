@@ -29,6 +29,7 @@ sleep 10
 sudo docker cp ~/Desktop/Assistente_Analyx/script_bd.sql ContainerAnalyx:/
 sudo docker exec -it ContainerAnalyx bash 
 mysql -u root -purubu100 bd_analyx < script_bd.sql
+exit
 
 
 
