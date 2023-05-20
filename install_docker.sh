@@ -24,8 +24,9 @@ sudo apt install docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo docker pull mysql:5.7
-sudo docker run -d -p 3306:3306 --name ContainerAnalyx -e "MYSQL_DATABASE=bd_analyx" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
-sudo docker exec -i ContainerAnalyx mysql -u root -purubu100 bd_analyx < \Desktop\Assistente_Analyx\script_bd.sql
+sudo docker run -d -p 3306:3306 --name ContainerAnalyxx -e "MYSQL_DATABASE=bd_analyx" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
+sudo docker exec -i ContainerAnalyxx mysql -u root -purubu100 bd_analyx
+ < \Desktop\Assistente_Analyx\script_bd.sql
 
 
 
