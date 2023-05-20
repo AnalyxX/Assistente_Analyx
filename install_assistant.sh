@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Script de assistente de instalação do Java
+# Script de assistente de instalação
 #
 
 # Cores
@@ -88,11 +88,9 @@ else
 		sudo apt-get install maven #instalar o Maven
 		mvn install #baixar as dependências
 		cd target #acesso ao target onde esta o .jar
-		sudo chmod +x analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar #atribui acesso ao arquivo para ser um executavel
-		java -jar analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar
+		sudo chmod 777 analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar #atribui acesso ao arquivo para ser um executavel
 		sleep 2
 		echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${VERDE}INSTALAÇÃO REALIZADA COM SUCESSO :D${RESET_FONTE}${RESET}"
-		echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${VERDE}${ITALICO}Analyx está sempre a sua disposição.${RESET_FONTE}${RESET}"
 	else
 		echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${RESET_FONTE}${AMARELO}${ITALICO}${NEGRITO}Tudo bem! , até a próxima ;)${RESET_FONTE}${RESET}"
 		sleep 2
@@ -100,3 +98,10 @@ else
 	fi
     
 fi
+echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${RESET_FONTE}${AMARELO}${ITALICO}Agora espere um momento enquanto realizo as configurações necessárias"
+sleep 5
+cd ..
+cd ..
+cd ..
+sudo chmod install_docker.sh
+sudo ./install_docker.sh
