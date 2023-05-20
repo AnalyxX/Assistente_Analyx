@@ -5,31 +5,31 @@ USE bd_analyx;
 
 CREATE TABLE IF NOT EXISTS empresa (
   id INT NOT NULL AUTO_INCREMENT,
-  cnpj CHAR(17) NULL,
-  razaoSocial VARCHAR(128) NULL,
-  responsavel VARCHAR(45) NULL,
-  telefone CHAR(13) NULL,
-  email VARCHAR(256) NULL,
+  cnpj CHAR(17) NOT NULL,
+  razaoSocial VARCHAR(128) NOT NULL,
+  responsavel VARCHAR(45) NOT NULL,
+  telefone CHAR(13) NOT NULL,
+  email VARCHAR(256) NOT NULL,
   PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS cpu (
   id INT NOT NULL AUTO_INCREMENT,
-  modeloCPU VARCHAR(45) NULL,
+  modeloCPU VARCHAR(100) NOT NULL,
   PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS disco (
   id INT NOT NULL AUTO_INCREMENT,
-  volume VARCHAR(45) NULL,
+  volume INT NOT NULL,
   PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS ram (
   id INT NOT NULL AUTO_INCREMENT,
-  total VARCHAR(45) NULL,
+  total INT NOT NULL,
   PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS especificacaoMaquina (
   id INT NOT NULL AUTO_INCREMENT,
-  numeroSerial VARCHAR(45) NULL,
+  hostName VARCHAR(100) NOT NULL,
   fkCpu INT NOT NULL,
   fkDisco INT NOT NULL,
   fkRam INT NOT NULL,
@@ -46,12 +46,12 @@ CREATE TABLE IF NOT EXISTS especificacaoMaquina (
 
 CREATE TABLE IF NOT EXISTS setor (
   id INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(45) NULL,
+  nome VARCHAR(45) NOT NULL,
   PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS funcionario (
   id INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(45) NULL,
+  nome VARCHAR(45) NOT NULL,
   matricula VARCHAR(45) NULL UNIQUE,
   fkEmpresa INT NULL,
   fkGestor INT NULL,
@@ -73,13 +73,13 @@ CREATE TABLE IF NOT EXISTS funcionario (
 
 CREATE TABLE IF NOT EXISTS tipoUsuario (
   id INT NOT NULL AUTO_INCREMENT,
-  tipoUsuario VARCHAR(45) NULL,
+  tipoUsuario VARCHAR(45) NOT NULL,
   PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS usuario (
   id INT NOT NULL AUTO_INCREMENT,
-  email VARCHAR(256) NULL UNIQUE,
-  senha VARCHAR(256) NULL,
+  email VARCHAR(256) NOT NULL UNIQUE,
+  senha VARCHAR(256) NOT NULL,
   fkTipoUsuario INT NOT NULL,
   fkFuncionario INT NOT NULL,
   PRIMARY KEY (id, fkFuncionario),
@@ -92,18 +92,21 @@ CREATE TABLE IF NOT EXISTS usuario (
 
 CREATE TABLE IF NOT EXISTS monitoramento (
   id INT NOT NULL AUTO_INCREMENT,
-  data DATE NULL,
+  data DATE NOT NULL,
+  hora TIME NOT NULL,
   fkMaquina INT NOT NULL,
   PRIMARY KEY (id,fkMaquina),
   CONSTRAINT fk_Monitoramento_EspecificacaoMaquina1
     FOREIGN KEY (fkMaquina)
     REFERENCES especificacaoMaquina (id));
 
-CREATE TABLE IF NOT EXISTS rede (
+CREATE TABLE IF NOT EXISTS pacote (
   id INT NOT NULL AUTO_INCREMENT,
-  latencia INT NULL,
-  upload INT NULL,
-  download INT NULL,
+  latencia FLOAT NOT NULL,
+  pacotesEnviados INT NOT NULL,
+  pacotesRecebidos INT NOT NULL,
+  bytesEnviados INT NOT NULL,
+  bytesRecebidos INT NOT NULL,
   fkMonitoramento INT NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_rede_Monitoramento1
@@ -112,12 +115,12 @@ CREATE TABLE IF NOT EXISTS rede (
 
 CREATE TABLE IF NOT EXISTS tipoComponente (
   id INT NOT NULL AUTO_INCREMENT,
-  tipoComponente VARCHAR(45) NULL,
+  tipoComponente VARCHAR(45) NOT NULL,
   PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS componente (
   id INT NOT NULL AUTO_INCREMENT,
-  uso FLOAT NULL,
+  uso FLOAT NOT NULL,
   fkMonitoramento INT NOT NULL,
   fkTipoComponente INT NOT NULL,
   PRIMARY KEY (id),
@@ -130,13 +133,13 @@ CREATE TABLE IF NOT EXISTS componente (
 
 CREATE TABLE IF NOT EXISTS tipoCategoria (
   id INT NOT NULL AUTO_INCREMENT,
-  tipoCategoria VARCHAR(45) NULL,
-  descricao VARCHAR(45) NULL,
+  tipoCategoria VARCHAR(45) NOT NULL,
+  descricao VARCHAR(45) NOT NULL,
   PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS alerta (
   id INT NOT NULL AUTO_INCREMENT,
-  nivelGravidade VARCHAR(45) NULL,
+  nivelGravidade VARCHAR(45) NOT NULL,
   fkMonitoramento INT NOT NULL,
   fkTipoComponente INT NOT NULL,
   fkTipoCategoria INT NOT NULL,
@@ -151,3 +154,47 @@ CREATE TABLE IF NOT EXISTS alerta (
     FOREIGN KEY (fkTipoCategoria)
     REFERENCES tipoCategoria (id));
     
+insert into tipoUsuario values
+(null,'web'),
+(null,'java');
+
+insert into setor value
+(null, 'DevOps');
+desc funcionario;
+insert into empresa value
+(null, '00000000000100', 'SPTech School','Rafel Petry','(11)959595959','rafael.petry@sptech.school');
+
+insert into cpu value 
+(null,'i5');
+
+insert into disco value
+(null,'10000000000');
+
+insert into ram value
+(null,'80000');
+desc especificacaoMaquina;
+insert into especificacaoMaquina values
+(null,'joao-host',1,1,1);
+
+insert into funcionario value
+(null,'Marcio','01191000',1,null,null,1);
+
+insert into funcionario value
+(null,'Joao','01202000',1,1,null,1);
+
+insert into usuario values
+(null,'marcio@email.com','1234',1,1),
+(null,'teste@email.com','1234',2,2);
+
+insert into monitoramento value
+(null,'2023-04-23','14:30:00',1);
+
+insert into tipoComponente values
+(null,'cpu'),
+(null,'disco'),
+(null,'ram');
+
+insert into componente value
+(null,50,1,1),
+(null,70,1,2),
+(null,30,1,3);
