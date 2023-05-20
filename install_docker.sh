@@ -25,9 +25,16 @@ sudo systemctl start docker
 sudo systemctl enable docker
 sudo docker pull mysql:5.7
 sudo docker run -d -p 3306:3306 --name ContainerAnalyx -e "MYSQL_DATABASE=bd_analyx" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
-sudo docker cp ~/Desktop/Assistente_Analyx/script_bd.sql ContainerAnalyx:/
 cd ~/Desktop/Assistente_Analyx
 sudo docker exec -i ContainerAnalyx mysql -uroot -purubu100 bd_analyx < script_bd.sql
+echo -e "${VERDE}${NEGRITO}
+Configuração Finalizada Com SUCESSO!!!
+${RESET}${NEGRITO}"
+echo -e "${CIANO}${NEGRITO}
+Analyx sempre a sua disposição !!! :D
+${RESET}${NEGRITO}"
+java -jar analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar
+
 
 
 
