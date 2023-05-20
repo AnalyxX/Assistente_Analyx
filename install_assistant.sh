@@ -69,7 +69,7 @@ sleep 2
 echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${RESET_FONTE}Agora vou verificar se existe nossa aplicação em sua máquina!!"
 sleep 4
 # Define o nome do executável do projeto
-project_exec="looca-api-1.0-SNAPSHOT-jar-with-dependencies.jar"
+project_exec="analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar"
 
 # Verifica se o executável do projeto existe
 if which "$project_exec" >/dev/null; then
