@@ -89,6 +89,7 @@ else
 		mvn install #baixar as dependências
 		cd target #acesso ao target onde esta o .jar
 		sudo chmod 777 analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar #atribui acesso ao arquivo para ser um executavel
+		sudo mv analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar ~/Desktop/
 		sleep 2
 		echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${VERDE}INSTALAÇÃO REALIZADA COM SUCESSO :D${RESET_FONTE}${RESET}"
 	else
@@ -103,5 +104,5 @@ sleep 5
 cd ..
 cd ..
 cd ..
-sudo chmod install_docker.sh
+sudo chmod +x install_docker.sh
 sudo ./install_docker.sh
