@@ -37,7 +37,7 @@ ${RESET}${NEGRITO}"
 echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${VERDE}${NEGRITO}
 Analyx sempre a sua disposição !!! :D
 ${RESET}${NEGRITO}"
-cd ~/Desktop
+cd ..
 java -jar analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 
