@@ -29,7 +29,7 @@ cd ~/Desktop/Assistente_Analyx
 echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${AMARELO}${NEGRITO}
 Concluindo configurações............
 ${RESET}${NEGRITO}"
-sleep 10
+sleep 20
 sudo docker exec -i ContainerAnalyx mysql -uroot -purubu100 bd_analyx < script_bd.sql
 echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${VERDE}${NEGRITO}
 Configuração Finalizada Com SUCESSO!!!
