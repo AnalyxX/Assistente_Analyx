@@ -1,17 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS bd_analyx DEFAULT CHARACTER SET utf8 ;
 USE bd_analyx;
 
--- drop database bd_analyx;
-
-CREATE TABLE IF NOT EXISTS empresa (
-  id INT NOT NULL AUTO_INCREMENT,
-  cnpj CHAR(17) NOT NULL,
-  razaoSocial VARCHAR(128) NOT NULL,
-  responsavel VARCHAR(45) NOT NULL,
-  telefone CHAR(13) NOT NULL,
-  email VARCHAR(256) NOT NULL,
-  PRIMARY KEY (id));
-
 CREATE TABLE IF NOT EXISTS cpu (
   id INT NOT NULL AUTO_INCREMENT,
   modeloCPU VARCHAR(100) NOT NULL,
@@ -44,61 +33,15 @@ CREATE TABLE IF NOT EXISTS especificacaoMaquina (
     FOREIGN KEY (fkRam)
     REFERENCES ram (id));
 
-CREATE TABLE IF NOT EXISTS setor (
-  id INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(45) NOT NULL,
-  PRIMARY KEY (id));
-
-CREATE TABLE IF NOT EXISTS funcionario (
-  id INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(45) NOT NULL,
-  matricula VARCHAR(45) NULL UNIQUE,
-  fkEmpresa INT NULL,
-  fkGestor INT NULL,
-  fkMaquina INT NULL,
-  fkSetor INT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_Funcionario_Empresa1
-    FOREIGN KEY (fkEmpresa)
-    REFERENCES empresa (id),
-  CONSTRAINT fk_Funcionario_Funcionario1
-    FOREIGN KEY (fkGestor)
-    REFERENCES funcionario (id),
-  CONSTRAINT fk_Funcionario_EspecificacaoMaquina1
-    FOREIGN KEY (fkMaquina)
-    REFERENCES especificacaoMaquina (id),
-  CONSTRAINT fk_Funcionario_setor1
-    FOREIGN KEY (fkSetor)
-    REFERENCES setor (id));
-
-CREATE TABLE IF NOT EXISTS tipoUsuario (
-  id INT NOT NULL AUTO_INCREMENT,
-  tipoUsuario VARCHAR(45) NOT NULL,
-  PRIMARY KEY (id));
-
-CREATE TABLE IF NOT EXISTS usuario (
-  id INT NOT NULL AUTO_INCREMENT,
-  email VARCHAR(256) NOT NULL UNIQUE,
-  senha VARCHAR(256) NOT NULL,
-  fkTipoUsuario INT NOT NULL,
-  fkFuncionario INT NOT NULL,
-  PRIMARY KEY (id, fkFuncionario),
-  CONSTRAINT fk_Usuario_Funcionario1
-    FOREIGN KEY (fkFuncionario)
-    REFERENCES funcionario (id),
-  CONSTRAINT fk_Usuario_tipoUsuario1
-    FOREIGN KEY (fkTipoUsuario)
-    REFERENCES tipoUsuario (id));
-
 CREATE TABLE IF NOT EXISTS monitoramento (
   id INT NOT NULL AUTO_INCREMENT,
   data DATE NOT NULL,
   hora TIME NOT NULL,
   fkMaquina INT NOT NULL,
-  PRIMARY KEY (id,fkMaquina),
   CONSTRAINT fk_Monitoramento_EspecificacaoMaquina1
     FOREIGN KEY (fkMaquina)
-    REFERENCES especificacaoMaquina (id));
+    REFERENCES especificacaoMaquina (id),
+  PRIMARY KEY (id, fkMaquina));
 
 CREATE TABLE IF NOT EXISTS pacote (
   id INT NOT NULL AUTO_INCREMENT,
@@ -137,55 +80,6 @@ CREATE TABLE IF NOT EXISTS tipoCategoria (
   descricao VARCHAR(45) NOT NULL,
   PRIMARY KEY (id));
   
-  CREATE TABLE IF NOT EXISTS tipoAlertaLimite (
-  id INT NOT NULL,
-  limite DECIMAL(5,2) NOT NULL,
-  PRIMARY KEY (id));
-
-CREATE TABLE IF NOT EXISTS alerta (
-  id INT NOT NULL AUTO_INCREMENT,
-  nivelGravidade VARCHAR(45) NOT NULL,
-  fkMonitoramento INT NOT NULL,
-  fkTipoComponente INT NOT NULL,
-  fkTipoCategoria INT NOT NULL,
-  fkTipoAlertaLimite INT NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_Alertas_Monitoramento1
-    FOREIGN KEY (fkMonitoramento)
-    REFERENCES monitoramento (id),
-  CONSTRAINT fk_Alertas_table11
-    FOREIGN KEY (fkTipoComponente)
-    REFERENCES tipoComponente (id),
-  CONSTRAINT fk_Alertas_tipoCategoria1
-    FOREIGN KEY (fkTipoCategoria)
-    REFERENCES tipoCategoria (id),
-    CONSTRAINT fk_alerta_tipoAlertaLimite1
-    FOREIGN KEY (fkTipoAlertaLimite)
-    REFERENCES tipoAlertaLimite (id));
-    
-insert into tipoUsuario values
-(null,'web'),
-(null,'java');
-
-insert into setor value
-(null, 'DevOps');
-
-insert into empresa value
-(null, '00000000000100', 'SPTech School','Rafel Petry','(11)959595959','rafael.petry@sptech.school');
-
-insert into especificacaoMaquina values
-(null,'joao-host',1,1,1);
-
-insert into funcionario value
-(null,'Marcio','01191000',1,null,null,1);
-
-insert into funcionario value
-(null,'Joao','01202000',1,1,1,1);
-
-insert into usuario values
-(null,'marcio@email.com','1234',1,1),
-(null,'teste@email.com','1234',2,2);
-
 insert into tipoComponente values
 (null,'cpu'),
 (null,'disco'),
