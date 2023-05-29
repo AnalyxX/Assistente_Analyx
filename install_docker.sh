@@ -40,7 +40,7 @@ ${RESET}${NEGRITO}"
 cd ..
 sudo apt-get install xvfb
 Xvfb :1 -screen 0 1024x768x24 & export DISPLAY=:1
-sleep 15
+sleep 25
 java -jar analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 
