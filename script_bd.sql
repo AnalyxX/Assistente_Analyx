@@ -84,3 +84,5 @@ insert into tipoComponente values
 (null,'cpu'),
 (null,'disco'),
 (null,'ram');
+
+select * from componente;
