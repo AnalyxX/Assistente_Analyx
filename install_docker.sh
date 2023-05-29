@@ -31,7 +31,7 @@ Concluindo configurações............
 ${RESET}${NEGRITO}"
 sleep 20
 sudo docker exec -i ContainerAnalyx mysql -uroot -purubu100 bd_analyx < script_bd.sql
-if ! command -v Xvfb > /dev/null; then
+if [ ! command -v Xvfb > /dev/null ]; then
   # Instala o servidor X
   echo "Instalando o servidor X..."
   sudo apt-get update
@@ -39,7 +39,7 @@ if ! command -v Xvfb > /dev/null; then
 fi
 
 # Verifica se o Xvfb está em execução
-if ! pgrep -x Xvfb > /dev/null; then
+if [ ! pgrep -x Xvfb > /dev/null ]; then
   # Configura o servidor X
   echo "Configurando o servidor X..."
   Xvfb :0 -screen 0 1024x768x24 &
