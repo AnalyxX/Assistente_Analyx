@@ -31,6 +31,27 @@ Concluindo configurações............
 ${RESET}${NEGRITO}"
 sleep 20
 sudo docker exec -i ContainerAnalyx mysql -uroot -purubu100 bd_analyx < script_bd.sql
+if ! command -v Xvfb > /dev/null; then
+  # Instala o servidor X
+  echo "Instalando o servidor X..."
+  sudo apt-get update
+  sudo apt-get install -y xvfb
+fi
+
+# Verifica se o Xvfb está em execução
+if ! pgrep -x Xvfb > /dev/null; then
+  # Configura o servidor X
+  echo "Configurando o servidor X..."
+  Xvfb :0 -screen 0 1024x768x24 &
+  export DISPLAY=:0
+fi
+
+# Verifica se a variável DISPLAY está definida
+if [ -z "$DISPLAY" ]; then
+  # Define a variável DISPLAY
+  echo "Definindo a variável DISPLAY..."
+  export DISPLAY=:0
+fi
 echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${VERDE}${NEGRITO}
 Configuração Finalizada Com SUCESSO!!!
 ${RESET}${NEGRITO}"
@@ -38,7 +59,6 @@ echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${VERDE}${NEGRITO}
 Analyx sempre a sua disposição !!! :D
 ${RESET}${NEGRITO}"
 cd ..
-export DISPLAY=:0.0
 java -jar analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 
