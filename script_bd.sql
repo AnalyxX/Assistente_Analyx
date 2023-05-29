@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS monitoramento (
 
 CREATE TABLE IF NOT EXISTS pacote (
   id INT NOT NULL AUTO_INCREMENT,
-  latencia DECIMAL(5,2) NOT NULL,
+  latencia DECIMAL(5,2),
   pacotesEnviados BIGINT NOT NULL,
   pacotesRecebidos BIGINT NOT NULL,
   bytesEnviados BIGINT NOT NULL,
