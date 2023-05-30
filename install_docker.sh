@@ -75,13 +75,9 @@ echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${VERDE}${NEGRITO}
 Analyx sempre a sua disposição !!! :D
 ${RESET}${NEGRITO}"
 sleep 3
-<<<<<<< HEAD
-sudo chmod +x install_second.sh
+sudo chmod 777 install_second.sh
 sudo ./install_second.sh
-=======
-sudo chmod 777 install_assistant_second.sh
-sudo ./install_assistant_second.sh
->>>>>>> 638c0bab595107695900cfa9e6b7bff386470de3
+
 
 
 
