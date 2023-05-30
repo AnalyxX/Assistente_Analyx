@@ -20,17 +20,34 @@ echo -e "${CIANO}${NEGRITO}
   /__\ ( \( ) /__\ (  )( \/ ( \/ )   / __(  _  ( \( (_  _)/__\ (_  _( \( ( ___(  _ \ 
  /(__)\ )  ( /(__)\ )(__\  / )  (   ( (__ )(_)( )  (  )( /(__)\ _)(_ )  ( )__) )   /
 (__)(__(_)\_(__)(__(____(__)(_/\_)   \___(_____(_)\_)(__(__)(__(____(_)\_(____(_)\_)${RESET}${NEGRITO}"
-sudo apt install docker.io
-sudo systemctl start docker
-sudo systemctl enable docker
-sudo docker pull mysql:5.7
-sudo docker run -d -p 3306:3306 --name ContainerAnalyx -e "MYSQL_DATABASE=bd_analyx" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
-cd ~/Desktop/Assistente_Analyx
-echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${AMARELO}${NEGRITO}
-Concluindo configurações............
+#!/bin/sh
+
+container_name="ContainerAnalyx"
+container_exists=$(docker ps -a --format '{{.Names}}' | grep -w "$container_name")
+
+if [ -n "$container_exists" ]; then
+  echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${VERDE}${NEGRITO}
+  ContainerAnalyx está em sua máquina , vou continuar as configurações !!
 ${RESET}${NEGRITO}"
-sleep 20
-sudo docker exec -i ContainerAnalyx mysql -uroot -purubu100 bd_analyx < script_bd.sql
+else
+  echo ""
+  echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${AMARELO}${NEGRITO}Não foi identificado o containerAnalyx
+${RESET}${NEGRITO}"
+  echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${AMARELO}${NEGRITO}Iniciando estapas de instalação
+${RESET}${NEGRITO}"
+  sudo apt install docker.io
+  sudo systemctl start docker
+  sudo systemctl enable docker
+  sudo docker pull mysql:5.7
+  sudo docker run -d -p 3306:3306 --name ContainerAnalyx -e "MYSQL_DATABASE=bd_analyx" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
+  cd ~/Desktop/Assistente_Analyx
+  echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${AMARELO}${NEGRITO}
+  Concluindo configurações............
+  ${RESET}${NEGRITO}"
+  sleep 20
+  sudo docker exec -i ContainerAnalyx mysql -uroot -purubu100 bd_analyx < script_bd.sql
+fi
+cd ~/Desktop/Assistente_Analyx
 if [ ! command -v Xvfb > /dev/null ]; then
   # Instala o servidor X
   echo "Instalando o servidor X..."
