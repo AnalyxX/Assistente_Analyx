@@ -76,7 +76,7 @@ Analyx sempre a sua disposição !!! :D
 ${RESET}${NEGRITO}"
 sudo xhost +
 sleep 3
-sudo chmod +x install_assistant_second.sh
+sudo chmod 777 install_assistant_second.sh
 sudo ./install_assistant_second.sh
 
 
