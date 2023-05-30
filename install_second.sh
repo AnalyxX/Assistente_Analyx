@@ -17,4 +17,4 @@ RESET_FONTE="\033[0m"
 
 echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${RESET}${VERDE}Iniciando aplicação${RESET_FONTE}"
 
-java -jar /home/ubuntu/Desktop/analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar
+java -jar analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar
