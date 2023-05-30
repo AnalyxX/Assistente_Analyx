@@ -104,5 +104,7 @@ sleep 5
 cd ..
 cd ..
 cd ..
-sudo chmod +x install_docker.sh
+sudo chmod 777 analyx_start.sh
+sudo mv analyx_start.sh ~/Desktop/
+sudo chmod 777 install_docker.sh
 sudo ./install_docker.sh
