@@ -40,7 +40,6 @@ ${RESET}${NEGRITO}"
   sudo systemctl enable docker
   sudo docker pull mysql:5.7
   sudo docker run -d -p 3306:3306 --name ContainerAnalyx -e "MYSQL_DATABASE=bd_analyx" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
-  cd ~/Desktop/Assistente_Analyx
   echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${AMARELO}${NEGRITO}
   Concluindo configurações............
   ${RESET}${NEGRITO}"
@@ -77,7 +76,9 @@ Analyx sempre a sua disposição !!! :D
 ${RESET}${NEGRITO}"
 sudo xhost +
 sleep 3
-java -jar /home/ubuntu/Desktop/analyx-source-gui-1.0-SNAPSHOT-jar-with-dependencies.jar
+sudo chmod +x install_assistant_second.sh
+sudo ./install_assistant_second.sh
+
 
 
 
