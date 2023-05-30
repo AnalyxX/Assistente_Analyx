@@ -74,9 +74,8 @@ ${RESET}${NEGRITO}"
 echo -e "${CIANO}${NEGRITO}[Assistente Analyx]${VERDE}${NEGRITO}
 Analyx sempre a sua disposição !!! :D
 ${RESET}${NEGRITO}"
-sleep 3
-sudo chmod 777 analyx_start.sh
-sudo mv analyx_start.sh ~/Desktop/
+
+
 
 
 
